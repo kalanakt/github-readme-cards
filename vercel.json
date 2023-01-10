@@ -1,8 +1,0 @@
-{
-  "buildCommand": "yarn build",
-  "cleanUrls": true,
-  "installCommand": "yarn install",
-  "github": {
-    "enabled": false
-  }
-}
