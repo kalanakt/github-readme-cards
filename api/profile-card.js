@@ -1,4 +1,3 @@
-
 const express = require("express");
 const axios = require("axios");
 const fs = require("fs");
@@ -43,8 +42,8 @@ const { name, theme, title, blog, subtitle } = req.query;
     const ghsubtitle = subtitle || response.data.bio;
 
     const svg = svprofileCardg.replace("{subtitle}", ghsubtitle).replace("{public_repos}", public_repos).replace("{totalForks}", totalForks).replace("{totalStars}", totalStars).replace("{followers}", followers).replace("{blog}", ghblog).replace("{login}", login).replace("{name}", ghname);
-
-    res.send(svg);
+    res.setHeader('Content-Type', 'image/svg+xml');
+    res.send(svg)
 
   } catch (error) {
     res.send(`Error: ${error.message}`);
