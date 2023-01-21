@@ -27,8 +27,9 @@ const { name, repo, theme } = req.query;
     const pullsCount = pulls.data.length;
     // Read SVG template
     const svg = svgrepoCard.replace("{issuesCount}", issuesCount).replace("{starCount}", starCount).replace("{subscribersCount}", subscribersCount).replace("{pullsCount}", pullsCount).replace("{forksCount}", forksCount).replace("{title}", title);
-   
-    res.send(svg);
+    res.setHeader('Content-Type', 'image/svg+xml');
+    res.send(svg)
+    
   } catch (error) {
     res.send(`Error: ${error.message}`);
   }});
