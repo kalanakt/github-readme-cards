@@ -42,7 +42,7 @@ name     | GitHub user name | -      | Yes
 repo    | GitHub reposiyiry name | - | Yes
 
 ```
-![github profile card](https://readme-cards.vercel.app/profile-card?name=<GITHUB_USERNAME>&repo=<GITHUB_REPO_NAME>)
+![github repo card](https://readme-cards.vercel.app/repo-card?name=<GITHUB_USERNAME>&repo=<GITHUB_REPO_NAME>)
 ```
 
 ### Customization
