@@ -57,17 +57,20 @@ const svgrepoCard = `
     </g>
     <g transform="translate(25, 0)">
       <text x="0" y="0" class="header" data-testid="header">{title}</text>
+      <animate attributeName="opacity" dur="6s" keyTimes="0;0.4;0.7;1" values="0;0.3;0.6;1" repeatCount="1"/>
     </g>
   </g>
   <g class="github-repo-card" data-testid="main-card-body" transform="translate(0, 55)">
     <text class="description" x="25" y="-5">
       <tspan dy="1.2em" x="25">{description}</tspan>
     </text>
+    <animate attributeName="opacity" dur="6s" keyTimes="0;0.4;0.7;1" values="0;0.3;0.6;1" repeatCount="1"/>
     <g transform="translate(30, 45)">
       <g transform="translate(0, 0)">
         <g data-testid="primary-lang">
           <circle data-testid="lang-color" cx="0" cy="-5" r="6" fill="{lang_color}"/>
           <text data-testid="lang-name" class="gray" x="15">{language}</text>
+           <animate attributeName="opacity" dur="6s" keyTimes="0;0.4;0.7;1" values="0;0.3;0.6;1" repeatCount="1"/>
         </g>
       </g>
       <g transform="translate(80.93125, 0)">
@@ -78,6 +81,7 @@ const svgrepoCard = `
         </g>
         <g transform="translate(20, 0)">
           <text data-testid="stargazers" class="gray">{starCount}</text>
+           <animate attributeName="opacity" dur="6s" keyTimes="0;0.4;0.7;1" values="0;0.3;0.6;1" repeatCount="1"/>
         </g>
       </g>
       <g transform="translate(141.24375, 0)">
@@ -88,6 +92,7 @@ const svgrepoCard = `
         </g>
         <g transform="translate(20, 0)">
           <text data-testid="forkcount" class="gray">{forksCount}</text>
+           <animate attributeName="opacity" dur="6s" keyTimes="0;0.4;0.7;1" values="0;0.3;0.6;1" repeatCount="1"/>
         </g>
       </g>
     </g>
