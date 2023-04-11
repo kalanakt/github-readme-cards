@@ -27,13 +27,13 @@ router.get('/', async (req, res) => {
       chartColor += `${item.color}|`;
     });
 
-    //const chartUrl = `https://quickchart.io/chart?c={type:'doughnut',data:{datasets:[{data:[${chartData.slice(0, -1)}],backgroundColor:['${chartColor.slice(0, -1)}']}],labels:['${chartLabels.slice(0, -1)}']}}`;
+    const chartUrl = `https://quickchart.io/chart?c={type:'doughnut',data:{datasets:[{data:[${chartData.slice(0, -1)}],backgroundColor:['${chartColor.slice(0, -1)}']}],labels:['${chartLabels.slice(0, -1)}']}}`;
     // const chartResponse = await axios.get(chartUrl, { responseType: "arraybuffer" });
     // const chartBuffer = Buffer.from(chartResponse.data, "binary");
 
     // res.setHeader("Content-Type", "image/svg+xml");
     // res.send(chartBuffer);
-    res.send(chartData.slice(0, -1))
+    res.send(chartUrl)
   } catch (error) {
     res.status(500).send(`Error: ${error.message}`);
   }
