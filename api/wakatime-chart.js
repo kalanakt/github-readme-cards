@@ -7,7 +7,7 @@ router.use((req, res, next) => {
   next()
 })
 // define the home page route
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const api = req.query.api;
     const username = req.query.username;
