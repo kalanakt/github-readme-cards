@@ -39,10 +39,10 @@ router.get('/', async (req, res) => {
     };
 
     const svgWidth = 500; // Width of the SVG element
-    const svgHeight = 500; // Height of the SVG element
+    const svgHeight = 300; // Height of the SVG element
     const centerX = svgWidth / 2; // X coordinate of the center of the chart
     const centerY = svgHeight / 2; // Y coordinate of the center of the chart
-    const chartRadius = 200; // Radius of the chart
+    const chartRadius = 100; // Radius of the chart
 
     const svg = `
     <svg width="${svgWidth}" height="${svgHeight}">
