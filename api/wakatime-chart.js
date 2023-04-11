@@ -64,7 +64,7 @@ router.get('/', async (req, res) => {
         `;
         }).join("")}
       ${chartjson.data.labels.map((label, index) => `
-        <text x="${centerX - chartRadius + 20}" y="${centerY - chartRadius + 30 * index}" font-size="16" fill="#fff">${label}</text>
+        <text x="${centerX - chartRadius }" y="${centerY - chartRadius + 30 * index}" font-size="16" fill="#fff">${label}</text>
         <rect x="${centerX - chartRadius - 50}" y="${centerY - chartRadius + 30 * index - 10}" width="20" height="20" fill="${chartjson.data.datasets[0].backgroundColor[index]}" />
         <text x="${centerX - chartRadius + 100}" y="${centerY - chartRadius + 30 * index}" font-size="16" fill="#fff">${chartjson.data.datasets[0].data[index]}%</text>
         `).join("")}
