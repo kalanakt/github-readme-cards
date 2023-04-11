@@ -40,11 +40,11 @@ router.get('/', async (req, res) => {
 
     const chartUrl = `https://quickchart.io/chart?c=${chartjson}`;
 
-    const chartResponse = await axios.get(chartUrl, { responseType: "arraybuffer" });
-    const chartBuffer = Buffer.from(chartResponse.data, "binary");
+    // const chartResponse = await axios.get(chartUrl, { responseType: "arraybuffer" });
+    // const chartBuffer = Buffer.from(chartResponse.data, "binary");
 
-    res.setHeader("Content-Type", "image/svg+xml");
-    res.send(chartBuffer);
+    // res.setHeader("Content-Type", "image/svg+xml");
+    res.send(chartUrl);
   } catch (error) {
     res.status(500).send(`Error: ${error.message}`);
   }
