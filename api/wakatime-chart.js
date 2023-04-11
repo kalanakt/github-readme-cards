@@ -70,6 +70,7 @@ router.get('/', async (req, res) => {
         `).join("")}
     </svg>`;
 
+    res.setHeader('Content-Type', 'image/svg+xml');
     res.send(svg);
   } catch (error) {
     res.status(500).send(`Error: ${error.message}`);
