@@ -38,11 +38,12 @@ router.get('/', async (req, res) => {
       }
     };
 
+
     const svgWidth = 800; // Width of the SVG element
     const svgHeight = 450; // Height of the SVG element
-    const centerX = svgWidth * 0.75; // X coordinate of the center of the chart, shifted to the right side
+    const centerX = svgWidth / 0.75; // X coordinate of the center of the chart
     const centerY = svgHeight / 2; // Y coordinate of the center of the chart
-    const chartRadius = 150; // Radius of the chart
+    const chartRadius = 200; // Radius of the chart
 
     const svg = `
     <svg width="${svgWidth}" height="${svgHeight}">
@@ -65,41 +66,9 @@ router.get('/', async (req, res) => {
       ${chartjson.data.labels.map((label, index) => `
         <text x="${centerX - chartRadius - 30}" y="${centerY - chartRadius + 30 * index}" font-size="14">${label}</text>
         <rect x="${centerX - chartRadius - 50}" y="${centerY - chartRadius + 30 * index - 10}" width="20" height="20" fill="${chartjson.data.datasets[0].backgroundColor[index]}" />
-        <text x="${centerX - chartRadius - 80}" y="${centerY - chartRadius + 30 * index + 14}" font-size="14">${chartjson.data.datasets[0].data[index]}%</text>
-      `).join("")}
+        <text x="${centerX - chartRadius + 30}" y="${centerY - chartRadius + 30 * index}" font-size="14">${chartjson.data.datasets[0].data[index]}%</text>
+        `).join("")}
     </svg>`;
-
-
-    // const svgWidth = 500; // Width of the SVG element
-    // const svgHeight = 500; // Height of the SVG element
-    // const centerX = svgWidth / 2; // X coordinate of the center of the chart
-    // const centerY = svgHeight / 2; // Y coordinate of the center of the chart
-    // const chartRadius = 200; // Radius of the chart
-
-    // const svg = `
-    // <svg width="${svgWidth}" height="${svgHeight}">
-    //   ${chartjson.data.datasets[0].data.map((item, index) => {
-    //   const startAngle = index === 0 ? 0 : chartjson.data.datasets[0].data.slice(0, index).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
-    //   const endAngle = chartjson.data.datasets[0].data.slice(0, index + 1).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
-    //   const color = chartjson.data.datasets[0].backgroundColor[index];
-    //   return `
-    //       <path
-    //         d="
-    //           M ${centerX},${centerY}
-    //           L ${centerX + chartRadius * Math.cos(startAngle)},${centerY + chartRadius * Math.sin(startAngle)}
-    //           A ${chartRadius},${chartRadius} 0 ${endAngle - startAngle > Math.PI ? 1 : 0},1 ${centerX + chartRadius * Math.cos(endAngle)},${centerY + chartRadius * Math.sin(endAngle)}
-    //           Z
-    //         "
-    //         fill="${color}"
-    //       ></path>
-    //     `;
-    // }).join("")}
-    //   ${chartjson.data.labels.map((label, index) => `
-    //     <text x="${centerX - chartRadius - 30}" y="${centerY - chartRadius + 30 * index}" font-size="14">${label}</text>
-    //     <rect x="${centerX - chartRadius - 50}" y="${centerY - chartRadius + 30 * index - 10}" width="20" height="20" fill="${chartjson.data.datasets[0].backgroundColor[index]}" />
-    //     <text x="${centerX - chartRadius + 30}" y="${centerY - chartRadius + 30 * index}" font-size="14">${chartjson.data.datasets[0].data[index]}%</text>
-    //     `).join("")}
-    // </svg>`;
 
     res.send(svg);
   } catch (error) {
