@@ -47,10 +47,10 @@ router.get('/', async (req, res) => {
     const svg = `
     <svg width="${svgWidth}" height="${svgHeight}">
       ${chartjson.data.datasets.data.map((item, index) => {
-        const startAngle = index === 0 ? 0 : chartjson.data.datasets[0].data.slice(0, index).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
-        const endAngle = chartjson.data.datasets[0].data.slice(0, index + 1).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
-        const color = chartjson.data.datasets[0].backgroundColor[index];
-        return `
+      const startAngle = index === 0 ? 0 : chartjson.data.datasets[0].data.slice(0, index).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
+      const endAngle = chartjson.data.datasets[0].data.slice(0, index + 1).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
+      const color = chartjson.data.datasets[0].backgroundColor[index];
+      return `
           <path
             d="
               M ${centerX},${centerY}
@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
             fill="${color}"
           ></path>
         `;
-      }).join("")}
+    }).join("")}
       ${chartjson.data.labels.map((label, index) => `
         <text x="${centerX - chartRadius - 30}" y="${centerY - chartRadius + 30 * index}" font-size="14">${label}</text>
         <rect x="${centerX - chartRadius - 50}" y="${centerY - chartRadius + 30 * index - 10}" width="20" height="20" fill="${chartjson.data.datasets[0].backgroundColor[index]}" />
@@ -71,7 +71,7 @@ router.get('/', async (req, res) => {
         <text x="${centerX}" y="${centerY - chartRadius - 20}" font-size="20" text-anchor="middle">${title}</text>
     </svg>`;
 
-    res.send(svg);
+    res.send(chartjson);
   } catch (error) {
     res.status(500).send(`Error: ${error.message}`);
   }
