@@ -46,7 +46,7 @@ router.get('/', async (req, res) => {
     const chartRadius = 200; // Radius of the chart
 
     const svg = `
-    <svg width="${svgWidth}" height="${svgHeight}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}">
       ${chartjson.data.datasets[0].data.map((item, index) => {
       const startAngle = index === 0 ? 0 : chartjson.data.datasets[0].data.slice(0, index).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
       const endAngle = chartjson.data.datasets[0].data.slice(0, index + 1).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
