@@ -23,8 +23,8 @@ router.get('/', async (req, res) => {
 
     data.forEach((item) => {
       chartData += `${item.percent},`;
-      chartLabels += `${item.name}|`;
-      chartColor += `${item.color}|`;
+      chartLabels += `${item.name},`;
+      chartColor += `${item.color},`;
     });
 
     const chartUrl = `https://quickchart.io/chart?c={type:'doughnut',data:{datasets:[{data:[${chartData.slice(0, -1)}],backgroundColor:['${chartColor.slice(0, -1)}']}],labels:['${chartLabels.slice(0, -1)}']}}`;
