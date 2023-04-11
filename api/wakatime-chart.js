@@ -27,13 +27,13 @@ router.get('/', async (req, res) => {
       chartColor += `${item.color}|`;
     });
 
-    // const chartUrl = `https://quickchart.io/chart?c={type:'doughnut',data:{datasets:[{data:[${chartData.slice(0, -1)}],backgroundColor:['#3581ba','#375eab','#16ce40','#dc9658','#083fa1','#d62728','#9467bd','#e44b23','#cb171e','#8c564b','#f34b7d','#1f9aef','#f1e05a','#aec7e8']}],labels:['${chartLabels.slice(0, -1)}']}}`;
+    const chartUrl = `https://quickchart.io/chart?c={type:'doughnut',data:{datasets:[{data:[${chartData.slice(0, -1)}],backgroundColor:['${chartColor.slice(0, -1)}']}],labels:['${chartLabels.slice(0, -1)}']}}`;
     // const chartResponse = await axios.get(chartUrl, { responseType: "arraybuffer" });
     // const chartBuffer = Buffer.from(chartResponse.data, "binary");
 
     // res.setHeader("Content-Type", "image/svg+xml");
     // res.send(chartBuffer);
-    res.send(chartColor)
+    res.send(chartUrl)
   } catch (error) {
     res.status(500).send(`Error: ${error.message}`);
   }
