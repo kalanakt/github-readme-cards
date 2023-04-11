@@ -1,6 +1,7 @@
 const express = require('express')
 const repoCard = require('./api/repo-card')
 const profileCard = require('./api/profile-card')
+const wakatimeChart = require('./api/wakatime-chart')
 
 const app = express()
 const PORT = 4000
@@ -20,6 +21,8 @@ app.get('/about', (req, res) => {
 app.use('/repo-card', repoCard)
 
 app.use('/profile-card', profileCard)
+
+app.use('/wakatime-chart', wakatimeChart)
 
 // Export the Express API
 module.exports = app
