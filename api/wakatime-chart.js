@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
       chartColor += `${item.color},`;
     });
 
-    const chartjson = encodeURIComponent(JSON.stringify({
+    const chartjson = {
       type: 'doughnut',
       data: {
         datasets: [{
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
         }],
         labels: chartLabels.slice(0, -1).split(",")
       }
-    }));
+    };
 
     const svgWidth = 500; // Width of the SVG element
     const svgHeight = 500; // Height of the SVG element
