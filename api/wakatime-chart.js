@@ -62,18 +62,17 @@ router.get('/', async (req, res) => {
             fill="${color}"
           ></path>
         `;
-    }).join("")}
+        }).join("")}
       ${chartjson.data.labels.map((label, index) => `
         <text x="${centerX - chartRadius - 30}" y="${centerY - chartRadius + 30 * index}" font-size="14">${label}</text>
         <rect x="${centerX - chartRadius - 50}" y="${centerY - chartRadius + 30 * index - 10}" width="20" height="20" fill="${chartjson.data.datasets[0].backgroundColor[index]}" />
         <text x="${centerX - chartRadius + 30}" y="${centerY - chartRadius + 30 * index}" font-size="14">${chartjson.data.datasets[0].data[index]}%</text>
         `).join("")}
-    </svg>`;
+    </svg>
+    `
 
     res.setHeader('Content-Type', 'image/svg+xml');
-    res.set("Content-Type", "image/svg+xml");
-    res.set("Cache-Control", "no-cache");
-    res.send(svg);
+    res.send(svg)
   } catch (error) {
     res.status(500).send(`Error: ${error.message}`);
   }
