@@ -27,7 +27,19 @@ router.get('/', async (req, res) => {
       chartColor += `${item.color},`;
     });
 
-    const chartUrl = `https://quickchart.io/chart?c={type:'doughnut',data:{datasets:[{data:[${chartData.slice(0, -1)}],backgroundColor:['${chartColor.slice(0, -1)}']}],labels:['${chartLabels.slice(0, -1)}']}}`;
+    const chartjson = encodeURIComponent(JSON.stringify({
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [chartData.slice(0, -1)],
+          backgroundColor: [chartColor.slice(0, -1)]
+        }],
+        labels: [chartLabels.slice(0, -1)]
+      }
+    }));
+
+    const chartUrl = `https://quickchart.io/chart?c=${chartjson}`;
+
     // const chartResponse = await axios.get(chartUrl, { responseType: "arraybuffer" });
     // const chartBuffer = Buffer.from(chartResponse.data, "binary");
 
