@@ -71,6 +71,8 @@ router.get('/', async (req, res) => {
     </svg>`;
 
     res.setHeader('Content-Type', 'image/svg+xml');
+    res.set("Content-Type", "image/svg+xml");
+    res.set("Cache-Control", "no-cache");
     res.send(svg);
   } catch (error) {
     res.status(500).send(`Error: ${error.message}`);
