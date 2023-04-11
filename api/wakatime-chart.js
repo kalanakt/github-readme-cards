@@ -46,7 +46,7 @@ router.get('/', async (req, res) => {
 
     const svg = `
     <svg width="${svgWidth}" height="${svgHeight}">
-      ${chartjson.data.datasets.data.map((item, index) => {
+      ${chartjson.data.datasets[0].data.map((item, index) => {
       const startAngle = index === 0 ? 0 : chartjson.data.datasets[0].data.slice(0, index).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
       const endAngle = chartjson.data.datasets[0].data.slice(0, index + 1).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / 100 * Math.PI * 2;
       const color = chartjson.data.datasets[0].backgroundColor[index];
