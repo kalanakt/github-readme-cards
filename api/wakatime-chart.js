@@ -31,10 +31,10 @@ router.get('/', async (req, res) => {
       type: 'doughnut',
       data: {
         datasets: [{
-          data: [chartData.slice(0, -1)],
-          backgroundColor: [chartColor.slice(0, -1)]
+          data: chartData.slice(0, -1).split(","),
+          backgroundColor: chartColor.slice(0, -1).split(",")
         }],
-        labels: [chartLabels.slice(0, -1)]
+        labels: chartLabels.slice(0, -1).split(",")
       }
     }));
 
