@@ -10,6 +10,9 @@
     "axios": "^1.2.2",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
+    "googleapis": "^94.0.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.20"
   }
 }
