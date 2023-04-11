@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 
     // res.setHeader("Content-Type", "image/svg+xml");
     // res.send(chartBuffer);
-    res.send(chartData)
+    res.send(chartLabels)
   } catch (error) {
     res.status(500).send(`Error: ${error.message}`);
   }
